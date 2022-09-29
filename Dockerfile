@@ -16,3 +16,4 @@ RUN pip install --upgrade setuptools
 
 RUN python -m pip install jupyterlab
 RUN python -m pip install tweepy
+RUN python -m pip install python-dotenv
