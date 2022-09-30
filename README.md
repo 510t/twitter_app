@@ -2,7 +2,16 @@
 
 twitter api で遊ぶ
 
-
+## 環境変数
+```sh
+CONSUMER_KEY
+CONSUMER_SECRET
+BEARER
+ACCESS_TOKEN
+ACCESS_TOKEN_SECRET
+SLACK_WEBHOOK_URL
+QUERY
+```
 
 ## docker 備忘録
 ```sh
