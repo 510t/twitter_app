@@ -38,11 +38,8 @@ def get_tweets_by_query():
 
 
 def post_tweet_to_slack(tweet):
-    # slack に投稿する機能
-    slack = slackweb.Slack(url=SLACK_WEBHOOK_URL)
-
     url = convert_status_to_url(tweet)
-
+    slack = slackweb.Slack(url=SLACK_WEBHOOK_URL)
     slack.notify(text=url)
 
 
