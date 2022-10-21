@@ -47,10 +47,6 @@ def get_tweets_by_query():
     api = tweepy.API(auth)
 
     query = create_query_by_time()
-    # query確認
-    slack = slackweb.Slack(url=SLACK_WEBHOOK_URL)
-    slack.notify(text=query)
-
     tweets = api.search_tweets(q=query, result_type='recent', count=100)
     tweets.reverse()
 
