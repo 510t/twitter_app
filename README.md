@@ -1,6 +1,6 @@
 # twitterApp
 
-twitter api で遊ぶ
+twitter api を使って絵を集めたりします
 
 ## 環境変数
 ```sh
