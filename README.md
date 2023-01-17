@@ -34,3 +34,8 @@ https://developer.twitter.com/en/docs/twitter-api/v1/tweets/search/api-reference
 
 ## heroku
 manual deploy
+
+## flask
+### local
+python3 コンテナ内 ```python3 app.py```で起動\
+http://localhost:5000/index
