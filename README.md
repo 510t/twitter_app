@@ -37,5 +37,12 @@ manual deploy
 
 ## flask
 ### local
-python3 コンテナ内 ```python3 app.py```で起動\
-http://localhost:5000/index
+ngrok で接続して EventSubs の verify を行う
+```
+ngrok http 5000
+```
+python3 コンテナ内で flask 起動
+```sh
+python3 app.py
+```
+http://localhost:5000/index 等で確認
