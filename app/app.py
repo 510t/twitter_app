@@ -1,25 +1,25 @@
 from dotenv import load_dotenv
-load_dotenv()
-
 import os
 from slack_bolt import App
-
+from slack_bolt.adapter.flask import SlackRequestHandler
+from slack_sdk import WebClient
 from flask import Flask, request, jsonify
+import tweepy
 
-app = Flask(__name__)
+load_dotenv()
 
+flask_app = Flask(__name__)
+app = App()
+handler = SlackRequestHandler(app)
 
-@app.route('/', methods=['GET', 'POST'])
-def respond_message():
-    json = request.json
-    d = {'challenge': json["challenge"]}
-    return jsonify(d)
+@flask_app.route('/', methods=['GET', 'POST'])
+def handle_slack_events():
+    return handler.handle(request)
 
-
-@app.route('/index')
+@flask_app.route('/index')
 def index():
     return "OK"
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    flask_app.run(host="0.0.0.0", port=5000, debug=True)
