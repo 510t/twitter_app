@@ -25,6 +25,18 @@ def convert_status_to_url(status):
     return url
 
 
+def convert_status_to_image_urls(status):
+    # tweet_id = status.id
+    # user_name = status.user.name
+    # user_id = status.user.screen_name
+    medias = status.entities['media']
+    image_urls = []
+    for media in medias:
+        image_urls.append(media['media_url_https'])
+
+    return image_urls
+
+
 # 2時間前～1時間前のツイートを取得するクエリ
 def create_query_by_time():
     jst = datetime.timezone(datetime.timedelta(hours=+9), 'JST')
@@ -54,9 +66,11 @@ def get_tweets_by_query():
 
 
 def post_tweet_to_slack(tweet):
-    url = convert_status_to_url(tweet)
-    slack = slackweb.Slack(url=SLACK_WEBHOOK_URL)
-    slack.notify(text=url)
+    # url = convert_status_to_url(tweet)
+    image_urls = convert_status_to_image_urls(tweet)
+    for image_url in image_urls:
+        slack = slackweb.Slack(url=SLACK_WEBHOOK_URL)
+        slack.notify(text=image_url)
 
 
 def main():
